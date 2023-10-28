@@ -1,0 +1,166 @@
+.overall-container {  
+  display: flex;
+  flex-direction: column;
+  min-height: 87vh;
+  gap: 2vh;
+  justify-content: space-between;
+  padding: 0 3vw;
+}
+.overall-contact-container {  
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;  
+  background-color: rgb(249, 249, 249);  
+}
+.contact-info-container {   
+  padding-left: 5vw; 
+  color: black;  
+  border-left: 3px solid  rgb(223, 19, 19);   
+}
+.contact-info-container > p:not(:last-child) {   
+  margin-bottom: 2vh;   
+}
+.form-container { 
+  display: flex;
+  flex-direction: column;
+  gap: 5vw;    
+}
+.contact-note { 
+  color: black; 
+  font-size: 18px;
+  font-weight: 600;
+}
+.user-data-container { 
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;   
+  color: black;  
+}
+.user-data-container > input {
+  height: 30px;  
+  padding: 0.2vw 2vw;
+  border: 1px solid lightgray;
+}
+.message-button-container{
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+.message-container {   
+  height: 12vh;
+  border: 1px solid lightgray;
+}
+.submit-button {
+  border: none;  
+  height: 30px;
+  background-color: darkorange;
+  color: white;  
+  font-weight: 700;
+}
+p, input, textarea, button {
+  font-size: 14px;
+}
+.map-container{   
+  background-color: aquamarine;
+  height: 21vh;
+}
+
+@media screen and (min-width: 380px) {
+  .message-container {
+    height: 13vh;    
+  }
+  .map-container{ 
+    height: 24vh;
+  }    
+}
+@media screen and (min-width: 400px) {
+  .message-container {
+    height: 14vh;    
+  }
+  .map-container{
+    margin-top: 1vh; 
+    height: 25vh;
+  }    
+}
+@media screen and (min-width: 500px){
+  .overall-container {        
+    min-height: 78vh;       
+    padding: 1vh 3vw 1vh;    
+    gap: 1vh;        
+  }  
+  .overall-contact-container {    
+    display: grid;
+    grid-template-columns: 45% 55%; 
+    align-items: center;
+    justify-items: start;        
+    background-color: rgb(249, 249, 249);    
+    gap: 0;
+  } 
+  .contact-info-container {
+    padding: 0 2vw 0 4vw; 
+    color: black;    
+    border-left: 3px solid  rgb(223, 19, 19);    
+  } 
+  .form-container {
+    width: 100%;
+    gap: 2vw;         
+  }
+  .user-data-container {    
+    gap: 1vw;
+  }
+  .user-data-container > input {
+    height: 25px;    
+    padding: 0.1vw 1vw;
+    border: 1px solid lightgray;
+  }
+  .message-button-container{   
+    gap: 2vw;
+  }
+  .message-container {
+    height: 17vh;    
+  }
+  .map-container {
+    height: 35vh;    
+  }
+}
+@media screen and (min-width: 800px){
+  .overall-container { 
+    min-height: 78vh;   
+    padding: 1vh 7vw;
+    gap: 1vh;    
+  } 
+  .overall-contact-container {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    padding: 1vh 10vw    
+  }   
+  .contact-info-container {       
+    padding-left: 30px;
+    color: black;    
+    border-left: 3px solid  rgb(223, 19, 19);      
+  }
+  .user-data-container > input {
+    height: 30px ;    
+    padding: 1px 10px;
+    border: 1px solid lightgray;    
+  }
+  .message-container {
+    height: 12vh;    
+  }
+  .map-container {
+    height: 32vh;    
+  }
+  p, input, textarea, button {
+    font-size: 14px;
+  }   
+}
+@media  screen and (min-width: 1100px) {
+  .map-container {
+    height: 29vh;    
+  }
+}
+@media  screen and (min-width: 1400px) {
+  .map-container {
+    height: 27vh;    
+  }
+}

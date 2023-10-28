@@ -1,0 +1,37 @@
+.animatedDiv {
+  position: absolute;  
+  width: 100%;
+  height: 88vh;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+.textDiv {
+  text-align: center;
+  padding: 0 8vw;   
+  position:absolute;
+  bottom: 15vh;
+}
+.textSpan {
+  background-color: rgb(154, 153, 153, 0.5);  
+  color: yellow;
+  font-size: calc(17px + 0.39vw);
+  font-weight: 800;
+  text-align: center;
+}
+@media screen and (min-width: 480px) {
+  .textDiv {
+    padding: 0 10vw; 
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .textDiv {
+    padding: 0 20vw; 
+  }
+}
+@media screen and (min-width: 1200px) {
+  .textDiv {
+    padding: 0 25vw; 
+  }
+}
