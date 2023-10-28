@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import GoogleMapReact from 'google-map-react';
+//import GoogleMapReact from 'google-map-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import contactCss from './contact.module.css';
@@ -20,14 +20,14 @@ const Contact = () => {
   const emailRef = useRef(null);
   const messageRef = useRef(null);
   const formRef = useRef(null);
-  const CompanyLocation = ({text}) => <div>{text}</div>;
-  const mapCenter = {
-    center: {
-      lat: 43.90178488252929,
-      lng: 18.336620744520634
-    },
-    zoom: 11
-  };
+  // const CompanyLocation = ({text}) => <div>{text}</div>;
+  // const mapCenter = {
+  //   center: {
+  //     lat: 43.90178488252929,
+  //     lng: 18.336620744520634
+  //   },
+  //   zoom: 11
+  // };
   
   const clearUserInfo = () => {
     if(formRef.current !== null) {
