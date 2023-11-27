@@ -5,7 +5,8 @@
   align-content: center;
   justify-content: space-between;  
   padding: 2vh 0vw;
-  min-height: 5vh;  
+  min-height: 8vh;
+  background-color: white;   
 }
 .logoMenue {
   display: flex;
@@ -24,16 +25,48 @@
   min-height: 27px;
   cursor: pointer;
 }
-.links {
-  display: none; 
-}
-.linksOnMenueClick {
+.linksContainerOnMenueClick {
   display: flex;    
   flex-direction: column; 
-  list-style-type: none;   
-  gap: 8px;     
-  align-self: start;       
-} 
+  list-style-type: none; 
+  align-self: start;
+  gap: 25px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;       
+}
+/* animation start */
+.menuEnter {
+  opacity: 0;
+  margin-top: -20px;
+}
+.menuEnterActive {
+  opacity: 1;
+  margin-top: 20px;
+  transition: opacity 200ms, margin-top 500ms;
+}
+.menuEnterDone {
+  opacity: 1;
+  margin-top: 20px;
+}
+.menuExit {
+  opacity: 1;
+  align-self: start;
+}
+.menuExitActive {
+  opacity: 0;
+  margin-top: -190px;
+  transition: opacity 200ms, margin-top 500ms;
+  pointer-events: none;
+  align-self: start;
+  list-style-type: none;  
+}
+/* animation end */ 
+
+@media screen and (min-width: 500px) {
+  .linksContainerOnMenueClick {    
+    gap: 15px;         
+  } 
+}
 
 @media  screen and (min-width: 900px) {
    .container{
@@ -41,8 +74,6 @@
     justify-content: space-around;
     gap: 5vw;
     padding: 1vh 2vw;
-    min-height: 10vh;
-    
   } 
   .logoMenue {    
     padding: 0;      
@@ -53,8 +84,8 @@
   .menue {
     display: none; 
   }
-  .links {
+  .linksContainer {
     display: flex;
-    list-style-type: none;
+    list-style-type: none;    
   }
 }

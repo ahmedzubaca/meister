@@ -1,8 +1,9 @@
 import React from "react";
+import Footer from '../../../components/Footer'
 import {projectsData} from '../helperFiles/projectsData';
 import { useParams, useNavigate } from "react-router-dom";
 import { ProjectCard } from "./ProjectCard";
-import useWindowResize from "../../../helpers/windowWidth";
+import useWindowResize from "../../../helperFunctions/windowWidth";
 import styles from '../cssModules/projects.module.css'
 
 const Projects = () => {  
@@ -13,13 +14,13 @@ const Projects = () => {
 
   const calculateImgHeight = (viewportWidth) => {    
     if(viewportWidth >= 500 && viewportWidth < 900) {
-      return 9* (40 * viewportWidth/100) / 16
+      return 9* (43 * viewportWidth/100) / 16
     }
     else if(viewportWidth >= 900 && viewportWidth < 1200) {
       return 9* (30 * viewportWidth/100) / 16
     }
     else if(viewportWidth >= 1200) {
-      return 9* (20 * viewportWidth/100) / 16
+      return 9* (25 * viewportWidth/100) / 16
     }
     else {
       return 9 * viewportWidth / 16
@@ -45,6 +46,7 @@ const Projects = () => {
 
   return (
     <>
+    <div className={styles.overallContainer}>
       <p className={styles.projectsCategoryTitle}>
           {
             projectsCategory === 'completedProjects' ? 'ZAVRŠENI PROJEKTI' 
@@ -64,7 +66,11 @@ const Projects = () => {
           />            
         } 
       </div>
-    </>
+    </div>
+    <div className={styles.foterDiv}>
+      <Footer />
+    </div>
+  </>
   )
 } 
 export default Projects;

@@ -1,7 +1,7 @@
 .overall-container {  
   display: flex;
   flex-direction: column;
-  min-height: 87vh;
+  min-height: 88vh;
   gap: 2vh;
   justify-content: space-between;
   padding: 0 3vw;
@@ -13,7 +13,7 @@
   background-color: rgb(249, 249, 249);  
 }
 .contact-info-container {   
-  padding-left: 5vw; 
+  padding: 1vh 5vw; 
   color: black;  
   border-left: 3px solid  rgb(223, 19, 19);   
 }
@@ -64,6 +64,9 @@ p, input, textarea, button {
   background-color: aquamarine;
   height: 21vh;
 }
+.footerDiv {
+  margin-top: 10vh;
+}
 
 @media screen and (min-width: 380px) {
   .message-container {
@@ -83,8 +86,7 @@ p, input, textarea, button {
   }    
 }
 @media screen and (min-width: 500px){
-  .overall-container {        
-    min-height: 78vh;       
+  .overall-container { 
     padding: 1vh 3vw 1vh;    
     gap: 1vh;        
   }  
@@ -124,15 +126,14 @@ p, input, textarea, button {
   }
 }
 @media screen and (min-width: 800px){
-  .overall-container { 
-    min-height: 78vh;   
+  .overall-container {
     padding: 1vh 7vw;
     gap: 1vh;    
   } 
   .overall-contact-container {
     display: grid;
     grid-template-columns: 45% 55%;
-    padding: 1vh 10vw    
+    padding: 1vh 0;    
   }   
   .contact-info-container {       
     padding-left: 30px;
@@ -155,12 +156,10 @@ p, input, textarea, button {
   }   
 }
 @media  screen and (min-width: 1100px) {
+  .overall-contact-container {    
+    padding: 1vh 5vw;    
+  } 
   .map-container {
-    height: 29vh;    
-  }
-}
-@media  screen and (min-width: 1400px) {
-  .map-container {
-    height: 27vh;    
+    height: 30vh;    
   }
 }

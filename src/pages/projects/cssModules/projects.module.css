@@ -1,14 +1,15 @@
 .projectsCategoryTitle {
   text-align: center;
-  font-size: calc(15px + 0.4vw);
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 2vh;
 }
 .allProjectsContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   row-gap: 3vh;
-  padding: 0 3vw;
+  padding: 4vh 3vw;
 }
 .singleProjectContainer {
   display: flex;
@@ -22,25 +23,41 @@
 .projectInfo > p {
   text-align: center;
   margin: 0;
-  font-size: calc(11px + 0.4vw);
+  font-size: 1.3rem;
   font-weight: 500;    
 }
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 500px) {  
+  .projectsCategoryTitle {
+    margin-top: 3vh;
+    margin-bottom: 2vh;    
+    font-size: 1.2rem;    
+  }
   .allProjectsContainer {      
     flex-direction: row;
     flex-wrap: wrap;      
   } 
+  .projectInfo > p {    
+    font-size: 1rem;        
+  }
   .projectImg {
-    width: 40vw;
-  }    
+    width: 43vw;
+  } 
+  .foterDiv {
+    margin-top: 10vh;
+  }   
 }
-@media screen and (min-width: 900px) {    
+@media screen and (min-width: 900px) { 
+  .overallContainer {
+    padding-top: 4vh;
+    margin-bottom: 5vh;
+    margin-top: 3vh;
+  }   
   .projectImg {
     width: 30vw;
   }    
 }
 @media screen and (min-width: 1200px) {    
   .projectImg {
-    width: 20vw;
+    width: 25vw;
   }    
 }

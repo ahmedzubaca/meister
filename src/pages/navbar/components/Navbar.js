@@ -1,24 +1,32 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from '../icons/meister-logo.png';
-import { AiOutlineMenu, AiFillCaretDown } from 'react-icons/ai';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { CSSTransition } from 'react-transition-group';
 import styles from '../cssModules/navbar.module.css';
-import { menuItems} from '../helper/menuItems';
+import { navItems} from '../helper/navItems';
 import CustomLink from "../components/CustomLink";
+
 
 const Navbar = () => {
 
-  const [isMenuOpened, setIsMenuOpened] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);  
+  const [isMenuOpened, setIsMenuOpened] = useState(window.innerWidth <= 900 ? false : true)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const nodeRef = useRef(null);  
   
   const togleMenu = () => {
     if(windowWidth <=900){
       setIsMenuOpened(curent => !curent)
-    }    
+    }      
   } 
 
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
+      if(window.innerWidth > 900) {
+        setIsMenuOpened(true);
+      } else {
+        setIsMenuOpened(false);
+      }
     };
 
     window.addEventListener('resize', handleWindowResize);
@@ -27,7 +35,7 @@ const Navbar = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-
+  
   return (
     <nav className={styles.container}> 
       <div className={styles.logoMenue}>     
@@ -35,21 +43,34 @@ const Navbar = () => {
         <div onClick={togleMenu}>            
           <AiOutlineMenu className={styles.menue} />
         </div>
-      </div>      
-      <ul className={isMenuOpened && windowWidth <=900 ? styles.linksOnMenueClick : styles.links}> 
+      </div> 
+      <CSSTransition
+              in={isMenuOpened}
+              nodeRef={nodeRef}
+              timeout={300}
+              classNames={{
+                enter: styles.menuEnter,
+                enterActive: styles.menuEnterActive,                
+                enterDone: styles.menuEnterDone,
+                exit: styles.menuExit,
+                exitActive: styles.menuExitActive               
+              }}
+              unmountOnExit
+          >     
+      <ul ref={nodeRef} className={isMenuOpened && windowWidth <=900 ? styles.linksContainerOnMenueClick : styles.linksContainer}> 
         {
-          menuItems.map ((item, index) => {
+          navItems.map ((item, index) => {
             return (              
-                <CustomLink key={index}
-                            navItem={item}
-                            togleMenu={togleMenu}
-                            >
-                            {item.name} { item.submenu ? <AiFillCaretDown /> : null } 
-                </CustomLink>              
+              <CustomLink key={index}
+                          navItem={item}
+                          togleMenu={togleMenu}
+                          windowWidth={windowWidth}                          
+              />                         
             )
           })
         }
-      </ul>      
+      </ul> 
+      </CSSTransition>     
     </nav>
   )
 } 

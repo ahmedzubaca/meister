@@ -1,6 +1,7 @@
 import React from "react";
 import {useTransition, animated} from 'react-spring';
-import useSlideIndex from "../../helpers/slideIndex";
+import useSlideIndex from "../../helperFunctions/slideIndex";
+import Footer from '../../components/Footer';
 import styles from './home.module.css';
 
 const Home = () => {
@@ -17,26 +18,31 @@ const Home = () => {
   }); 
   
   return (
-    <div> 
-      {      
-        transitions((style, index)  => (
-          <animated.div
-            className={styles.animatedDiv}
-            style = {{
-              ...style,
-              backgroundImage: `url(${slides[index]})`              
-            }}         
-          />          
-        ))      
-      } 
-      <div className={styles.textDiv}>
-        <span className={styles.textSpan}>
-          Posebnost, inovativnost i kvalitet naših zaposlenika 
-          omogućava implementiranje konkurentske strategije 
-          diferencijacije i čini okosnicu razvoja kompanije „Meister“.
-        </span>      
+    <div className={styles.overallContainer}>
+      <div className={styles.animationContainer}> 
+        {      
+          transitions((style, index)  => (
+            <animated.div
+              className={styles.animatedDiv}
+              style = {{
+                ...style,
+                backgroundImage: `url(${slides[index]})`              
+              }}         
+            />          
+          ))      
+        } 
+        <div className={styles.textDiv}>
+          <span className={styles.textSpan}>
+            Posebnost, inovativnost i kvalitet naših zaposlenika 
+            omogućava implementiranje konkurentske strategije 
+            diferencijacije i čini okosnicu razvoja kompanije „Meister“.
+          </span>      
+        </div>      
       </div>
-    </div>
+      <div>
+        <Footer /> 
+      </div>
+    </div>   
   )
 } 
 export default Home;

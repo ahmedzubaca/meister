@@ -1,11 +1,48 @@
+.overallContainer {
+  display: flex;
+  flex-direction: column;
+}
+.animationContainer {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+}
 .animatedDiv {
   position: absolute;  
   width: 100%;
-  height: 88vh;
+  height: 100%;
   background-position: center;
-  background-size: cover;
-  z-index: -1;
+  background-size: cover;  
 }
+/* animation start */
+/* .fadeAppear {
+  opacity: 1;
+}
+.fadeAppear.fadeAppearActive {
+  opacity: 1;
+  transition: opacity 300ms linear;
+} */
+/* .fadeEnter {
+  opacity: 0;
+}
+.fadeEnter.fadeEnterActive {
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+.fadeExit {
+  opacity: 1;
+}
+.fadeExit.fadeExitActive {
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+.fadeExitDone {
+  opacity: 0;
+} */
+
+/* animation end */
+
+
 .textDiv {
   text-align: center;
   padding: 0 8vw;   
@@ -19,14 +56,14 @@
   font-weight: 800;
   text-align: center;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) {  
   .textDiv {
     padding: 0 10vw; 
   }
 }
 
 @media screen and (min-width: 800px) {
-  .textDiv {
+   .textDiv {
     padding: 0 20vw; 
   }
 }

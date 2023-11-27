@@ -1,4 +1,4 @@
-export const menuItems = [
+export const navItems = [
   {
     route: '/',
     name: 'POČETNA'

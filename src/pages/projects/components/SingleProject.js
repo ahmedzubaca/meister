@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
+import Footer from '../../../components/Footer';
 import { useLocation } from "react-router-dom";
-import useWindowResize from "../../../helpers/windowWidth";
+import useWindowResize from "../../../helperFunctions/windowWidth";
 import { BiCaretLeft, BiCaretRight } from 'react-icons/bi';
 import styles from '../cssModules/singleProject.module.css';
 
@@ -8,6 +9,7 @@ const SingleProject = () => {
   const {state} = useLocation();   
   const windowSize = useWindowResize(); 
   const [ slideIndex, setSlideIndex ] = useState(0);
+  const touchStartX = useRef(null);
   const [ projectData ] = useState(state);
   const isMobile = windowSize.windowWidth < 500 || ((windowSize.windowWidth >=500 &&  windowSize.windowWidth < 950) && windowSize.windowHeight < 500 )  ? true : false; 
   
@@ -43,14 +45,37 @@ const SingleProject = () => {
     setSlideIndex(number);    
   }
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    console.log('start trigered');
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX.current;
+
+    if (diff > 50) {
+      handlePreviousArrow();
+    } else if (diff < -50) {
+      handleNextArrow();
+    }
+
+    touchStartX.current = null;
+  };
+
   return(
     <> 
     {
       isMobile ?     
         <div className={styles.overallContainer} >
-          <div className={styles.titleSizeContainer}>
-            <p> {projectData.title} </p>
-            <p> {projectData.size} </p>
+          <div className={styles.titleSizeContainer}
+               onTouchStart={handleTouchStart}
+               onTouchEnd={handleTouchEnd}
+          >
+            <h3> {projectData.title} </h3>
+            <h4> {projectData.size} </h4>
           </div>
           <div className={styles.imgContainer}> 
           <img src={require(`../images/${projectData.projectsCategory}/${projectData.id}/${projectData.images[slideIndex]}`)} alt='slika'
@@ -76,15 +101,15 @@ const SingleProject = () => {
               </div>
           </div>        
           <div className={styles.description}>
-            <p> Opis projekta</p>
+            <h4> Opis projekta</h4>
             <p> {projectData.description} </p>
           </div>                      
         </div>
        : 
        <div className={styles.overallContainer} >
           <div className={styles.titleSizeContainer}>
-            <p> {projectData.title} </p>
-            <p> {projectData.size} </p>
+            <h3> {projectData.title} </h3>
+            <h4> {projectData.size} </h4>
           </div>
           <div className={styles.imgContainer}>        
             {
@@ -97,11 +122,14 @@ const SingleProject = () => {
             } 
         </div>              
           <div className={styles.description}>
-            <p> Opis projekta</p>
+            <h4> Opis projekta</h4>
             <p> {projectData.description} </p>
           </div>                      
         </div> 
-      }      
+      } 
+      <div>
+        <Footer />
+    </div>     
     </>  
   )
 }

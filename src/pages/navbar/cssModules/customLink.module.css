@@ -1,42 +1,75 @@
 .menuItem {
   position: relative;
-  cursor: pointer;
-  min-width: 15vw;  
+  cursor: pointer;  
+  min-width: 15vw;   
 }
 .menuItemLink {
   text-decoration: none;
   color: black;
-  font-size: calc(12px + 0.39vw);
+  font-size: 1.1rem;
   font-weight: 500; 
 }
 .dropdownMenu {  
-  display: none;  
-  list-style: none;  
-  margin-left: 5vw;
+  list-style: none;
+  margin-left: 10vw;  
   min-width: 30vw; 
-  padding: 0;
-  background-color: #fff;   
+  padding: 1px;
+  background-color: white;   
 }
-.dropdownMenu.show {
-  display: block;
+/* animation start */
+.submenuEnter {
+  opacity: 0;
+  margin-top: -20px;
 }
-.dropdownMenuItem {
-  margin-top: 1vh;
-  font-size: calc(10px + 0.39vw);
-  font-weight: 600;   
+.submenuEnterActive {
+  opacity: 1;
+  margin-top: -1px;
+  transition: opacity 400ms, margin-top 300ms;
+}
+.submenuEnterDone {
+  opacity: 1;
+  margin-top: -1px;
+}
+.submenuExit {
+  opacity: 1;
+}
+.submenuExitActive {
+  opacity: 0;
+  margin-top: -70px;
+  transition: opacity 200ms, margin-top 400ms;
+  pointer-events: none;
+}
+/* animation end */
+
+.dropdownMenuItem {  
+  padding-top: 2vh;
+  font-size: 1rem;
+  font-weight: 500;   
 }
 .dropdownMenuItem a{
   text-decoration: none;  
 }
-a.dropdownMenuItemLink:hover {
-  color: rgb(186, 69, 69);
-  font-weight: 700;
-  border-bottom: 2px solid rgb(186, 69, 69);
-}
 .active {  
   border-bottom: 2px solid rgb(186, 69, 69);
 }
-
+@media screen and (min-width: 500px ) {
+  .menuItemLink {    
+    font-size: 1rem;    
+  }
+  .dropdownMenuItem {    
+    font-size: 0.9rem;      
+  }
+  a.menuItemLink:hover, span.menuItemLink:hover {
+    color: rgb(186, 69, 69);
+    font-weight: 700;
+    border-bottom: 2px solid rgb(186, 69, 69);
+  }
+  a.dropdownMenuItemLink:hover {
+    color: rgb(186, 69, 69);
+    font-weight: 600;
+    border-bottom: 2px solid rgb(186, 69, 69);
+  }
+}
 @media screen and (min-width: 900px ) {
   .menuItem {
     position: relative;
@@ -44,13 +77,8 @@ a.dropdownMenuItemLink:hover {
     min-width: 145px;      
   }
   .menuItemLink {     
-    margin: 0 20px; 
-  }
-  
-  a.menuItemLink:hover {
-    color: rgb(186, 69, 69);
-    font-weight: 700;
-    border-bottom: 2px solid rgb(186, 69, 69);
+    margin: 0 20px;
+    font-size: 1.05rem; 
   }
   .dropdownMenu {  
     position: absolute;
@@ -58,8 +86,7 @@ a.dropdownMenuItemLink:hover {
     min-width: 15vw;
     z-index: 1;
     margin-left: 4vw;
-    margin-top: 1%;
-    padding-bottom: 1vh;
+    margin-top: 2px;   
     padding-left: 1vw
   }  
 }
