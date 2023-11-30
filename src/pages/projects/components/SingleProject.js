@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Footer from '../../../components/Footer';
 import { useLocation } from "react-router-dom";
 import useWindowResize from "../../../helperFunctions/windowWidth";
@@ -12,7 +12,8 @@ const SingleProject = () => {
   const touchStartX = useRef(null);
   const [ projectData ] = useState(state);
   const isMobile = windowSize.windowWidth < 500 || ((windowSize.windowWidth >=500 &&  windowSize.windowWidth < 950) && windowSize.windowHeight < 500 )  ? true : false; 
-  
+  const [ slider, setSlider] = useState(false);
+
   const calculateImgHeight = (viewportWidth, viewportHeight) => {    
     if((viewportWidth >= 500 && viewportWidth <= 950)&&(viewportHeight <= 500)) {
       return 80 * viewportHeight / 100;
@@ -42,12 +43,12 @@ const SingleProject = () => {
   }
 
   const handleDotClick = (number) => {
-    setSlideIndex(number);    
+    setSlideIndex(number); 
+    if(number === projectData.images.length -1 || number === 0) setSlider(prev => !prev);   
   }
 
   const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    console.log('start trigered');
+    touchStartX.current = e.touches[0].clientX;    
   };
 
   const handleTouchEnd = (e) => {
@@ -56,14 +57,28 @@ const SingleProject = () => {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX.current;
 
-    if (diff > 50) {
+    if (diff > 50 ) {
       handlePreviousArrow();
-    } else if (diff < -50) {
+      setSlider(prev => !prev)
+    }
+    if (diff < -50 ) {
       handleNextArrow();
+      setSlider(prev => !prev)
     }
 
     touchStartX.current = null;
+    
   };
+
+  useEffect(() => {
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+    console.log('useEffect')
+    return () => {      
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };    
+  }, [slider]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return(
     <> 
